@@ -232,6 +232,9 @@ class Services_Zencoder extends Services_Zencoder_Base
             return TRUE;
         }
         if (empty($headers['Content-Type'])) {
+            $headers['Content-Type'] = $headers['content-type'];
+        }
+        if (empty($headers['Content-Type'])) {
             throw new Services_Zencoder_Exception('Response header is missing Content-Type', $body);
         }
         switch ($headers['Content-Type']) {
